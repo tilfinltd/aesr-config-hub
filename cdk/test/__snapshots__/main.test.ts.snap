@@ -1,0 +1,765 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All stacks default 1`] = `
+{
+  "Outputs": {
+    "ExportsOutputRefAuthDomainCertificateABF6CF9E6A29C16A": {
+      "Export": {
+        "Name": "aesr-test-global-certificate:ExportsOutputRefAuthDomainCertificateABF6CF9E6A29C16A",
+      },
+      "Value": {
+        "Ref": "AuthDomainCertificateABF6CF9E",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AuthDomainCertificateABF6CF9E": {
+      "Properties": {
+        "DomainName": "auth.subdomain.aesr.dev",
+        "DomainValidationOptions": [
+          {
+            "DomainName": "auth.subdomain.aesr.dev",
+            "HostedZoneId": "DUMMY",
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "aesr-test-global-certificate/AuthDomainCertificate",
+          },
+        ],
+        "ValidationMethod": "DNS",
+      },
+      "Type": "AWS::CertificateManager::Certificate",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`All stacks default 2`] = `
+{
+  "Outputs": {
+    "ExportsOutputRefApiDomainCertificate0C6AEA7E06B5AD39": {
+      "Export": {
+        "Name": "aesr-test-local-certificate:ExportsOutputRefApiDomainCertificate0C6AEA7E06B5AD39",
+      },
+      "Value": {
+        "Ref": "ApiDomainCertificate0C6AEA7E",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "ApiDomainCertificate0C6AEA7E": {
+      "Properties": {
+        "DomainName": "api.subdomain.aesr.dev",
+        "DomainValidationOptions": [
+          {
+            "DomainName": "api.subdomain.aesr.dev",
+            "HostedZoneId": "DUMMY",
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "aesr-test-local-certificate/ApiDomainCertificate",
+          },
+        ],
+        "ValidationMethod": "DNS",
+      },
+      "Type": "AWS::CertificateManager::Certificate",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`All stacks default 3`] = `
+{
+  "Mappings": {
+    "AWSCloudFrontPartitionHostedZoneIdMap": {
+      "aws": {
+        "zoneId": "Z2FDTNDATAQYW2",
+      },
+      "aws-cn": {
+        "zoneId": "Z3RFFRIM2A3IF5",
+      },
+    },
+  },
+  "Outputs": {
+    "ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00": {
+      "Export": {
+        "Name": "aesr-test-cognito:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "UserPool6BA7E5F2",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+      "DependsOn": [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-000011112222-ap-northeast-1",
+          "S3Key": "17c16a3854838fd3ff4bda08146122a6701f33b9c86ae17f415ad0dc47a97544.zip",
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AuthDomainRecord1650F0E5": {
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "UserPoolUserPoolDomainCloudFrontDomainName3917B242",
+              "DomainDescription.CloudFrontDistribution",
+            ],
+          },
+          "HostedZoneId": {
+            "Fn::FindInMap": [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              {
+                "Ref": "AWS::Partition",
+              },
+              "zoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "auth.subdomain.aesr.dev.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "RootDomainRecordA96C29A1": {
+      "Properties": {
+        "HostedZoneId": "DUMMY",
+        "Name": "subdomain.aesr.dev.",
+        "ResourceRecords": [
+          "127.0.0.1",
+        ],
+        "TTL": "1800",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "UserPool6BA7E5F2": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AccountRecoverySetting": {
+          "RecoveryMechanisms": [
+            {
+              "Name": "verified_phone_number",
+              "Priority": 1,
+            },
+            {
+              "Name": "verified_email",
+              "Priority": 2,
+            },
+          ],
+        },
+        "AdminCreateUserConfig": {
+          "AllowAdminCreateUserOnly": true,
+        },
+        "EmailVerificationMessage": "The verification code to your new account is {####}",
+        "EmailVerificationSubject": "Verify your new account",
+        "Schema": [
+          {
+            "Mutable": true,
+            "Name": "email",
+            "Required": true,
+          },
+        ],
+        "SmsVerificationMessage": "The verification code to your new account is {####}",
+        "UserPoolName": "aesr-test-user-pool",
+        "VerificationMessageTemplate": {
+          "DefaultEmailOption": "CONFIRM_WITH_CODE",
+          "EmailMessage": "The verification code to your new account is {####}",
+          "EmailSubject": "Verify your new account",
+          "SmsMessage": "The verification code to your new account is {####}",
+        },
+      },
+      "Type": "AWS::Cognito::UserPool",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "UserPoolUserPoolClient40176907": {
+      "Properties": {
+        "AllowedOAuthFlows": [
+          "code",
+        ],
+        "AllowedOAuthFlowsUserPoolClient": true,
+        "AllowedOAuthScopes": [
+          "openid",
+          "email",
+        ],
+        "CallbackURLs": [
+          "https://api.subdomain.aesr.dev/callback",
+        ],
+        "ClientName": "aesr-test-browser-extension",
+        "GenerateSecret": false,
+        "IdTokenValidity": 1080,
+        "RefreshTokenValidity": 43200,
+        "SupportedIdentityProviders": [
+          "COGNITO",
+        ],
+        "TokenValidityUnits": {
+          "IdToken": "minutes",
+          "RefreshToken": "minutes",
+        },
+        "UserPoolId": {
+          "Ref": "UserPool6BA7E5F2",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolClient",
+    },
+    "UserPoolUserPoolDomain9F01E991": {
+      "Properties": {
+        "CustomDomainConfig": {
+          "CertificateArn": {
+            "Fn::ImportValue": "aesr-test-global-certificate:ExportsOutputRefAuthDomainCertificateABF6CF9E6A29C16A",
+          },
+        },
+        "Domain": "auth.subdomain.aesr.dev",
+        "UserPoolId": {
+          "Ref": "UserPool6BA7E5F2",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolDomain",
+    },
+    "UserPoolUserPoolDomainCloudFrontDomainName3917B242": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "UserPoolUserPoolDomainCloudFrontDomainNameCustomResourcePolicyF5EF8095",
+      ],
+      "Properties": {
+        "Create": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"CognitoIdentityServiceProvider","action":"describeUserPoolDomain","parameters":{"Domain":"",
+              {
+                "Ref": "UserPoolUserPoolDomain9F01E991",
+              },
+              ""},"physicalResourceId":{"id":"",
+              {
+                "Ref": "UserPoolUserPoolDomain9F01E991",
+              },
+              ""}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"CognitoIdentityServiceProvider","action":"describeUserPoolDomain","parameters":{"Domain":"",
+              {
+                "Ref": "UserPoolUserPoolDomain9F01E991",
+              },
+              ""},"physicalResourceId":{"id":"",
+              {
+                "Ref": "UserPoolUserPoolDomain9F01E991",
+              },
+              ""}}",
+            ],
+          ],
+        },
+      },
+      "Type": "Custom::UserPoolCloudFrontDomainName",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "UserPoolUserPoolDomainCloudFrontDomainNameCustomResourcePolicyF5EF8095": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "cognito-idp:DescribeUserPoolDomain",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "UserPoolUserPoolDomainCloudFrontDomainNameCustomResourcePolicyF5EF8095",
+        "Roles": [
+          {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`All stacks default 4`] = `
+{
+  "Outputs": {
+    "aesrtestapiEndpoint0EA1DC97": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "aesrtestapi08E5B288",
+            },
+            ".execute-api.ap-northeast-1.",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "aesrtestapiDeploymentStageprod072FDD55",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "ApiDomain2D27DFFC": {
+      "Properties": {
+        "DomainName": "api.subdomain.aesr.dev",
+        "EndpointConfiguration": {
+          "Types": [
+            "REGIONAL",
+          ],
+        },
+        "RegionalCertificateArn": {
+          "Fn::ImportValue": "aesr-test-local-certificate:ExportsOutputRefApiDomainCertificate0C6AEA7E06B5AD39",
+        },
+      },
+      "Type": "AWS::ApiGateway::DomainName",
+    },
+    "ApiDomainMapaesrtestapigatewayaesrtestapiDAC39E2906CBB9D3": {
+      "Properties": {
+        "DomainName": {
+          "Ref": "ApiDomain2D27DFFC",
+        },
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+        "Stage": {
+          "Ref": "aesrtestapiDeploymentStageprod072FDD55",
+        },
+      },
+      "Type": "AWS::ApiGateway::BasePathMapping",
+    },
+    "ApiDomainRecord355D35CF": {
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "ApiDomain2D27DFFC",
+              "RegionalDomainName",
+            ],
+          },
+          "HostedZoneId": {
+            "Fn::GetAtt": [
+              "ApiDomain2D27DFFC",
+              "RegionalHostedZoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "api.subdomain.aesr.dev.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "aesrtestapi08E5B288": {
+      "Properties": {
+        "Name": "aesr-test-api",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "aesrtestapiDeployment5AA56D05e325bb3e73176b9c7daacd131bf2f559": {
+      "DependsOn": [
+        "aesrtestapicallbackGETC98F9A4D",
+        "aesrtestapicallbackB36D34ED",
+        "aesrtestapiuserconfigGET432F3D56",
+        "aesrtestapiuserconfigD48EE893",
+        "aesrtestapiuser59805604",
+        "cognitoAuthorizer9878DCCA",
+      ],
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "aesrtestapiDeploymentStageprod072FDD55": {
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "aesrtestapiDeployment5AA56D05e325bb3e73176b9c7daacd131bf2f559",
+        },
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "aesrtestapicallbackB36D34ED": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "aesrtestapi08E5B288",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "callback",
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "aesrtestapicallbackGETC98F9A4D": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseTemplates": {
+                "text/html": "<html>
+            <body style="font-family:sans-serif;padding:36px">
+             <p style="font-size:18px;line-height:2">
+               Please keep this tab open and<br>
+               <u>click on the <strong>AWS Extend Switch Roles</strong> icon</u>
+               in your browser toolbar<br>
+               to complete the connection to <strong>AESR Config Hub</strong>.
+             </p>
+            </body>
+           </html>",
+              },
+              "StatusCode": "200",
+            },
+          ],
+          "PassthroughBehavior": "WHEN_NO_MATCH",
+          "RequestTemplates": {
+            "application/json": "{"statusCode":200}",
+          },
+          "Type": "MOCK",
+        },
+        "MethodResponses": [
+          {
+            "ResponseModels": {
+              "text/html": "Empty",
+            },
+            "StatusCode": "200",
+          },
+        ],
+        "ResourceId": {
+          "Ref": "aesrtestapicallbackB36D34ED",
+        },
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "aesrtestapiuser59805604": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "aesrtestapi08E5B288",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "user",
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "aesrtestapiuserconfigD48EE893": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "aesrtestapiuser59805604",
+        },
+        "PathPart": "config",
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "aesrtestapiuserconfigGET432F3D56": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "cognitoAuthorizer9878DCCA",
+        },
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": "arn:aws:apigateway:ap-northeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-northeast-1:000011112222:function:aesr-test-config-proivder/invocations",
+        },
+        "ResourceId": {
+          "Ref": "aesrtestapiuserconfigD48EE893",
+        },
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "aesrtestapiuserconfigGETApiPermissionTestaesrtestapigatewayaesrtestapiDAC39E29GETuserconfig3373835B": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:000011112222:function:aesr-test-config-proivder",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:execute-api:ap-northeast-1:000011112222:",
+              {
+                "Ref": "aesrtestapi08E5B288",
+              },
+              "/test-invoke-stage/GET/user/config",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "aesrtestapiuserconfigGETApiPermissionaesrtestapigatewayaesrtestapiDAC39E29GETuserconfigE1F2EFE0": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:000011112222:function:aesr-test-config-proivder",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:execute-api:ap-northeast-1:000011112222:",
+              {
+                "Ref": "aesrtestapi08E5B288",
+              },
+              "/",
+              {
+                "Ref": "aesrtestapiDeploymentStageprod072FDD55",
+              },
+              "/GET/user/config",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "cognitoAuthorizer9878DCCA": {
+      "Properties": {
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "CognitoAuthorizer",
+        "ProviderARNs": [
+          {
+            "Fn::ImportValue": "aesr-test-cognito:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00",
+          },
+        ],
+        "RestApiId": {
+          "Ref": "aesrtestapi08E5B288",
+        },
+        "Type": "COGNITO_USER_POOLS",
+      },
+      "Type": "AWS::ApiGateway::Authorizer",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

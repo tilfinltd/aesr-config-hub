@@ -1,0 +1,13 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+build
+coverage
+dist
+
+### CDK-specific ignores ###
+*.swp
+cdk.context.json
+.cdk.staging
+cdk.out
